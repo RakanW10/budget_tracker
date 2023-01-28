@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'view/auth/signup.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       // initialRoute: RouterName.Login,
       // getPages: routerApp,
-      home: Login(),
+      home: Signup(),
     );
   }
 }
