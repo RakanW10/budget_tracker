@@ -12,4 +12,5 @@ List<GetPage<dynamic>> routerApp = [
 
 abstract class RouterName {
   static const String homepage = "/homepage";
+  static const String Login = "/login";
 }
