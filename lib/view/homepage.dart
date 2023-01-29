@@ -2,10 +2,13 @@ import 'package:budget_tracker/Constants.dart';
 import 'package:budget_tracker/style.dart';
 import 'package:budget_tracker/view/components/overviewCard.dart';
 import 'package:budget_tracker/view/components/overviewList.dart';
+import 'package:budget_tracker/view/components/serviceList.dart';
 import 'package:budget_tracker/view/customPain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+
+import 'components/serviceButton.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
@@ -60,7 +63,11 @@ class Homepage extends StatelessWidget {
                       const SizedBox(
                         height: 18,
                       ),
-                      OverviewList(),
+                      const OverviewList(),
+                      const SizedBox(
+                        height: 42,
+                      ),
+                      const ServiceList()
                     ],
                   ),
                 ),
