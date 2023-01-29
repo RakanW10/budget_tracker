@@ -16,6 +16,7 @@ dependencies:
     sdk: flutter
   get_storage: ^2.0.3
   flutter_svg: ^1.1.6
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
