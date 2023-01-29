@@ -1,4 +1,5 @@
 import 'package:budget_tracker/router/router.dart';
+import 'package:budget_tracker/view/Slider.dart';
 import 'package:budget_tracker/view/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,14 +17,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: const [
+      localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: const [
+      supportedLocales: [
         Locale('en'), // English
         Locale('ar'), // Spanish
       ],
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       // initialRoute: RouterName.Login,
       // getPages: routerApp,
-      home: Signup(),
+      home: SliderPage(),
     );
   }
 }
