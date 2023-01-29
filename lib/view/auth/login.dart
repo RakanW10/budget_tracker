@@ -1,6 +1,6 @@
 import 'package:budget_tracker/style.dart';
 import 'package:flutter/material.dart';
-import '../customPain.dart';
+import '../mainCanva.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});
@@ -15,7 +15,7 @@ class Login extends StatelessWidget {
           children: [
             CustomPaint(
               size: Size(WIDTH, (WIDTH * 0.2365038560411311).toDouble()),
-              painter: RPSCustomPainter(),
+              painter: MainCanava(),
             ),
             SingleChildScrollView(
               child: Column(

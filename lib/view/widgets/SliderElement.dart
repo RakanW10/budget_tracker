@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 import '../auth/login.dart';
 
-Widget SlideElement({
+Widget SplashElement({
   required BuildContext context,
   required String title,
   required String description,

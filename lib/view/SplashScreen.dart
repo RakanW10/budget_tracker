@@ -4,14 +4,14 @@ import 'package:flutter/material.dart';
 
 import 'widgets/SliderElement.dart';
 
-class SliderPage extends StatefulWidget {
-  const SliderPage({Key? key}) : super(key: key);
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
-  State<SliderPage> createState() => _SliderPageState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SliderPageState extends State<SliderPage> {
+class _SplashScreenState extends State<SplashScreen> {
   CarouselController buttonCarouselController = CarouselController();
 
   @override
@@ -21,7 +21,7 @@ class _SliderPageState extends State<SliderPage> {
       body: CarouselSlider(
         carouselController: buttonCarouselController,
         items: [
-          SlideElement(
+          SplashElement(
             context: context,
             title: "قم بتدوين المصروفات",
             description: "قم بتدوين نفقاتك اليومية للمساعدة في إدارة الأموال",
@@ -29,7 +29,7 @@ class _SliderPageState extends State<SliderPage> {
             isLast: false,
             controller: buttonCarouselController,
           ),
-          SlideElement(
+          SplashElement(
             context: context,
             title: "إدارة بسيطة للأموال",
             description:
@@ -38,7 +38,7 @@ class _SliderPageState extends State<SliderPage> {
             isLast: false,
             controller: buttonCarouselController,
           ),
-          SlideElement(
+          SplashElement(
             context: context,
             title: "سهل التتبع والتحليل",
             description:

@@ -1,5 +1,5 @@
 import 'package:budget_tracker/router/router.dart';
-import 'package:budget_tracker/view/Slider.dart';
+import 'package:budget_tracker/view/SplashScreen.dart';
 import 'package:budget_tracker/view/auth/login.dart';
 import 'package:budget_tracker/view/homepage.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../style.dart';
-import '../customPain.dart';
+import '../mainCanva.dart';
 
 class Signup extends StatelessWidget {
   Signup({super.key});
@@ -16,7 +16,7 @@ class Signup extends StatelessWidget {
           children: [
             CustomPaint(
               size: Size(WIDTH, (WIDTH * 0.2365038560411311).toDouble()),
-              painter: RPSCustomPainter(),
+              painter: MainCanava(),
             ),
             SingleChildScrollView(
               child: Column(
