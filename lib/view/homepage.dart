@@ -3,7 +3,6 @@ import 'package:budget_tracker/style.dart';
 import 'package:budget_tracker/view/components/overviewCard.dart';
 import 'package:budget_tracker/view/components/overviewList.dart';
 import 'package:budget_tracker/view/components/serviceList.dart';
-import 'package:budget_tracker/view/customPain.dart';
 import 'package:budget_tracker/view/mainCanva.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
