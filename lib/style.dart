@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 
 var backgroundColor = const Color.fromRGBO(18, 18, 18, 1);
 
-var cards_backgrond = const Color(0x0000000);
+var cards_background = const Color(0xFF000000);
+
+var secondray = const Color(0xFF7FC4DC);
+var secondray_background = const Color(0xFF28353A);
 
 var textFormFileColor = const Color.fromRGBO(37, 37, 37, 1);
 

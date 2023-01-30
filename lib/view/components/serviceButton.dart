@@ -1,3 +1,4 @@
+import 'package:budget_tracker/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -17,7 +18,7 @@ class ServiceButton extends StatelessWidget {
       width: 132,
       height: 108,
       decoration: BoxDecoration(
-        color: Colors.grey,
+        color: cards_background,
         borderRadius: BorderRadius.circular(8),
       ),
       child: Column(
@@ -36,7 +37,10 @@ class ServiceButton extends StatelessWidget {
           ),
           Text(
             label,
-            style: const TextStyle(fontSize: 18),
+            style: TextStyle(
+              fontSize: 18,
+              color: text_main,
+            ),
           ),
         ],
       ),

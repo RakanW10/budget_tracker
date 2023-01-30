@@ -6,12 +6,12 @@ class OverviewCard extends StatelessWidget {
   const OverviewCard({
     super.key,
     required this.icon,
-    required this.main_text,
+    required this.mainText,
     required this.amount,
     required this.onTap,
   });
   final SvgPicture icon;
-  final String main_text;
+  final String mainText;
   final String amount;
   final Function() onTap;
 
@@ -30,7 +30,7 @@ class OverviewCard extends StatelessWidget {
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: Colors.grey, //! need to change
+            color: secondray_background, //! need to change
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,7 +43,7 @@ class OverviewCard extends StatelessWidget {
               ),
               icon,
               Text(
-                main_text,
+                mainText,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
