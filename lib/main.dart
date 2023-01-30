@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
@@ -44,9 +44,8 @@ class MyApp extends StatelessWidget {
       ],
       locale: Locale('ar'),
       title: 'Material App',
-      // initialRoute: RouterName.Login,
-      // getPages: routerApp,
-      home: Homepage(),
+      initialRoute: RouterName.AddElementPage,
+      getPages: routerApp,
     );
   }
 }
