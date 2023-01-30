@@ -5,6 +5,9 @@ import '../mainCanva.dart';
 class Login extends StatelessWidget {
   Login({super.key});
   bool isSecret = true;
+
+  TextEditingController userEmail = TextEditingController();
+  TextEditingController userPassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var WIDTH = MediaQuery.of(context).size.width;
@@ -54,6 +57,7 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         TextFormField(
+                          controller: userEmail,
                           decoration: InputDecoration(
                             hintText: "ادخل البريد الأكتروني",
                             hintStyle: const TextStyle(
@@ -91,6 +95,14 @@ class Login extends StatelessWidget {
                           ),
                         ),
                         TextFormField(
+                          controller: userPassword,
+                          validator: (val) {
+                            if (val!.isEmpty) {
+                              return "enter your password";
+                            } else if (val.length < 10) {
+                              return "password must be more than 10 character";
+                            }
+                          },
                           decoration: InputDecoration(
                             suffixIcon: Padding(
                               padding:
