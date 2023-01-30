@@ -14,7 +14,7 @@ class OverviewList extends StatelessWidget {
         children: [
           OverviewCard(
             icon: SvgPicture.asset("assets/icons/Wallet.svg"),
-            mainText: "المصروفات الشهرية",
+            mainText: "مجموع الصرف الشهرية",
             amount: "1400.00",
             onTap: () {
               //TODO: need a function
@@ -25,7 +25,7 @@ class OverviewList extends StatelessWidget {
           ),
           OverviewCard(
             icon: SvgPicture.asset("assets/icons/Wallet.svg"),
-            mainText: "المصروفات الشهرية",
+            mainText: "معدل الصرف الشهري",
             amount: "1400.00",
             onTap: () {
               //TODO: need a function
@@ -36,7 +36,7 @@ class OverviewList extends StatelessWidget {
           ),
           OverviewCard(
             icon: SvgPicture.asset("assets/icons/Wallet.svg"),
-            mainText: "المصروفات الشهرية",
+            mainText: "معدل الالتزامات الشهرية",
             amount: "1400.00",
             onTap: () {
               //TODO: need a function

@@ -1,11 +1,16 @@
+import 'package:budget_tracker/controller/validator.dart';
 import 'package:flutter/material.dart';
 
 import '../../style.dart';
 import '../mainCanva.dart';
+import '../widgets/customInputFiled.dart';
 
 class Signup extends StatelessWidget {
   Signup({super.key});
-  bool isSecret = true;
+  TextEditingController userEmail = TextEditingController();
+  TextEditingController userPassword = TextEditingController();
+  TextEditingController userPassword1 = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     var WIDTH = MediaQuery.of(context).size.width;
@@ -38,146 +43,47 @@ class Signup extends StatelessWidget {
                   SizedBox(
                     height: MediaQuery.of(context).size.height * 0.08,
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 16, left: 32, right: 32),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(bottom: 6),
-                          child: const Text(
-                            "البريد الأكتروني",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            hintText: "ادخل البريد الأكتروني",
-                            hintStyle: const TextStyle(
-                              color: Colors.white,
-                            ),
-                            fillColor: textFormFileColor,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Colors.white, width: 1.0),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  CustomInputFiled(
+                    userController: userEmail,
+                    labelName: "البريد الأكتروني",
+                    hintText: "ادخل البريد الأكتروني",
+                    validator: (val) {
+                      if (val!.isEmpty) {
+                        return "can not be empty";
+                      } else if (val.isValidPassword()) {
+                        return "not valid passowrd";
+                      }
+                      return null;
+                    },
+                    inputType: InputType.email,
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 16, left: 32, right: 32),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(bottom: 6),
-                          child: const Text(
-                            "كلمة المرور",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            suffixIcon: Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.only(end: 12.0),
-                              child: GestureDetector(
-                                child: isSecret
-                                    ? const Icon(
-                                        Icons.visibility,
-                                      )
-                                    : const Icon(
-                                        Icons.visibility_off,
-                                      ),
-                                onTap: () => !isSecret,
-                              ),
-                            ),
-                            suffixIconColor: Colors.white,
-                            hintText: "ادخل كلمة المرور",
-                            hintStyle: const TextStyle(
-                              color: Colors.white,
-                            ),
-                            fillColor: textFormFileColor,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Colors.white, width: 1.0),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  CustomInputFiled(
+                    userController: userPassword,
+                    labelName: "كلمة المرور",
+                    hintText: "ادخل كلمة المرور",
+                    validator: (val) {
+                      if (val!.isEmpty) {
+                        return "enter your password";
+                      } else if (val.isValidPassword()) {
+                        return "not valid password";
+                      }
+                      return null;
+                    },
+                    inputType: InputType.password,
                   ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.only(top: 16, left: 32, right: 32),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.only(bottom: 6),
-                          child: const Text(
-                            "كرر كلمة المرور",
-                            style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            suffixIcon: Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.only(end: 12.0),
-                              child: GestureDetector(
-                                child: isSecret
-                                    ? const Icon(
-                                        Icons.visibility,
-                                      )
-                                    : const Icon(
-                                        Icons.visibility_off,
-                                      ),
-                                onTap: () => !isSecret,
-                              ),
-                            ),
-                            suffixIconColor: Colors.white,
-                            hintText: "كرر كلمة المرور",
-                            hintStyle: const TextStyle(
-                              color: Colors.white,
-                            ),
-                            fillColor: textFormFileColor,
-                            filled: true,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
-                                  color: Colors.white, width: 1.0),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                  CustomInputFiled(
+                    userController: userPassword1,
+                    labelName: "كرر كلمة المرور",
+                    hintText: "كرر كلمة المرور",
+                    validator: (val) {
+                      if (val!.isEmpty) {
+                        return "enter your password";
+                      } else if (val.isValidPassword()) {
+                        return "not valid password";
+                      }
+                      return null;
+                    },
+                    inputType: InputType.password,
                   ),
                   Padding(
                     padding:
@@ -240,8 +146,8 @@ class Signup extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding:
-                        const EdgeInsets.only(top: 16, left: 32, right: 32),
+                    padding: const EdgeInsets.only(
+                        top: 16, left: 32, right: 32, bottom: 16),
                     child: SizedBox(
                       height: 66,
                       child: ElevatedButton(

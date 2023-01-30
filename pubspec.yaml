@@ -17,6 +17,10 @@ dependencies:
   get_storage: ^2.0.3
   flutter_svg: ^1.1.6
   carousel_slider: ^4.2.1
+  firebase_auth: ^4.2.5
+  google_sign_in: ^5.4.4
+  firebase_core: ^2.4.1
+  syncfusion_flutter_datepicker: ^20.4.44
 
 dev_dependencies:
   flutter_test:
