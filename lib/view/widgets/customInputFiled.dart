@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 
 import '../../style.dart';
 
-enum InputType { email, password, normal }
+enum InputType { email, password, normal, number }
 
 class CustomInputFiled extends StatelessWidget {
-  const CustomInputFiled({
+  CustomInputFiled({
     super.key,
     required this.userController,
     required this.labelName,
     required this.hintText,
-    required this.validator,
+    this.validator,
     this.inputType = InputType.normal,
   });
 
@@ -20,7 +20,7 @@ class CustomInputFiled extends StatelessWidget {
   final String labelName;
   final String hintText;
   final InputType inputType;
-  final String? Function(String?) validator;
+  String? Function(String?)? validator;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +40,9 @@ class CustomInputFiled extends StatelessWidget {
             ),
           ),
           TextFormField(
+            keyboardType: inputType == InputType.number
+                ? TextInputType.number
+                : TextInputType.text,
             validator: validator,
             obscureText: inputType == InputType.password ? true : false,
             style: const TextStyle(color: Colors.white),

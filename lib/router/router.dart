@@ -27,7 +27,7 @@ List<GetPage<dynamic>> routerApp = [
   ),
   GetPage(
     name: RouterName.AddElementPage,
-    page: () => const AddElementPage(),
+    page: () => AddElementPage(),
   )
 ];
 

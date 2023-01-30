@@ -3,7 +3,7 @@ import 'package:budget_tracker/style.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import '../mainCanva.dart';
-import '../components/customInputFiled.dart';
+import '../widgets/customInputFiled.dart';
 
 class Login extends StatelessWidget {
   Login({super.key});

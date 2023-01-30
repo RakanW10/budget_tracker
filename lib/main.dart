@@ -33,18 +33,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: [
+      localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: [
+      supportedLocales: const [
         Locale('en'), // English
         Locale('ar'), // Spanish
       ],
-      locale: Locale('ar'),
+      locale: const Locale('ar'),
       title: 'Material App',
-      initialRoute: RouterName.AddElementPage,
+      initialRoute: RouterName.SplashScreen,
       getPages: routerApp,
     );
   }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import '../../style.dart';
 import '../mainCanva.dart';
-import '../components/customInputFiled.dart';
+import '../widgets/customInputFiled.dart';
 
 class Signup extends StatelessWidget {
   Signup({super.key});
