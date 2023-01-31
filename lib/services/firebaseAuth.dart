@@ -62,3 +62,6 @@ Future<UserCredential> signInWithGoogle() async {
   // Once signed in, return the UserCredential
   return await FirebaseAuth.instance.signInWithCredential(credential);
 }
+
+// var user = FirebaseAuth.instance.currentUser!;
+

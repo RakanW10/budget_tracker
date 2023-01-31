@@ -1,4 +1,4 @@
-import 'package:budget_tracker/controller/validator.dart';
+import 'package:budget_tracker/controllers/validator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
@@ -11,6 +11,7 @@ class AddElementPage extends StatelessWidget {
   AddElementPage({super.key});
   TextEditingController elementName = TextEditingController();
   TextEditingController elementPrice = TextEditingController();
+  TextEditingController elementType = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +89,12 @@ class AddElementPage extends StatelessWidget {
                 labelName: "سعر العنصر",
                 hintText: "ادخل سعر العنصر",
                 inputType: InputType.number,
+              ),
+              CustomInputFiled(
+                userController: elementType,
+                labelName: "النوع",
+                hintText: "ادخل النوع",
+                inputType: InputType.normal,
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 44, left: 32, right: 32),
