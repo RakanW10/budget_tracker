@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Element {
   Element({
     required this.elementName,
@@ -17,12 +19,18 @@ class Element {
 
   String toRawJson() => json.encode(toJson());
 
-  factory Element.fromJson(Map<String, dynamic> json) => Element(
-        elementName: json["elementName"],
-        elementPrice: json["elementPrice"],
-        elementType: json["elementType"],
-        elementDate: json["elementDate"],
-      );
+  factory Element.fromJson(Map<String, dynamic> json) {
+    // convert timestamp to DataTime object
+    Timestamp t = json["elementDate"] as Timestamp;
+    DateTime dt = t.toDate();
+
+    return Element(
+      elementName: json["elementName"],
+      elementPrice: json["elementPrice"],
+      elementType: json["elementType"],
+      elementDate: dt,
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "elementName": elementName,

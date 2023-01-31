@@ -9,11 +9,13 @@ class OverviewCard extends StatelessWidget {
     required this.mainText,
     required this.amount,
     required this.onTap,
+    this.SAR = false,
   });
   final SvgPicture icon;
   final String mainText;
   final String amount;
   final Function() onTap;
+  final bool SAR;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class OverviewCard extends StatelessWidget {
           padding: const EdgeInsets.only(left: 6, right: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
-            color: secondray_background, //! need to change
+            color: secondray_background,
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +64,7 @@ class OverviewCard extends StatelessWidget {
                 ),
               ),
               Text(
-                "ريال",
+                SAR ? "ريال" : "%",
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,

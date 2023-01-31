@@ -21,12 +21,13 @@ class OperationCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(left: 35),
+      margin: const EdgeInsets.symmetric(vertical: 5),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
-            height: 44,
-            width: 44,
+            height: 50,
+            width: 50,
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
@@ -87,7 +88,9 @@ class OperationCard extends StatelessWidget {
             amount < 0
                 ? "assets/icons/arrow-thin-bottom-left-corner-icon 1.svg"
                 : "assets/icons/arrow-thin-top-left-corner-icon 1.svg",
-          )
+            height: 25,
+            width: 25,
+          ),
         ],
       ),
     );

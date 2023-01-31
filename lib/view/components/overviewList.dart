@@ -16,6 +16,7 @@ class OverviewList extends StatelessWidget {
             icon: SvgPicture.asset("assets/icons/Wallet.svg"),
             mainText: "مجموع الصرف الشهرية",
             amount: "1400.00",
+            SAR: true,
             onTap: () {
               //TODO: need a function
             },
