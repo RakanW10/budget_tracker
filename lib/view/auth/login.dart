@@ -2,7 +2,7 @@ import 'package:budget_tracker/controller/validator.dart';
 import 'package:budget_tracker/style.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import '../mainCanva.dart';
+import '../paints/mainCanva.dart';
 import '../widgets/customInputFiled.dart';
 
 class Login extends StatelessWidget {

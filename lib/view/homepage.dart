@@ -1,4 +1,4 @@
-import 'package:budget_tracker/Constants.dart';
+import 'package:budget_tracker/constants.dart';
 import 'package:budget_tracker/style.dart';
 import 'package:budget_tracker/view/components/operationList.dart';
 import 'package:budget_tracker/view/components/overviewList.dart';

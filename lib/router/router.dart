@@ -4,7 +4,7 @@ import 'package:budget_tracker/view/auth/signup.dart';
 import 'package:budget_tracker/view/homepage.dart';
 import 'package:get/get.dart';
 
-import '../view/SplashScreen.dart';
+import '../view/splashScreen.dart';
 import '../view/auth/login.dart';
 
 List<GetPage<dynamic>> routerApp = [
@@ -14,27 +14,27 @@ List<GetPage<dynamic>> routerApp = [
     binding: HomepageBinding(),
   ),
   GetPage(
-    name: RouterName.Login,
+    name: RouterName.login,
     page: () => Login(),
   ),
   GetPage(
-    name: RouterName.Register,
+    name: RouterName.register,
     page: () => Signup(),
   ),
   GetPage(
-    name: RouterName.SplashScreen,
+    name: RouterName.splashScreen,
     page: () => const SplashScreen(),
   ),
   GetPage(
-    name: RouterName.AddElementPage,
+    name: RouterName.addElementPage,
     page: () => AddElementPage(),
   )
 ];
 
 abstract class RouterName {
   static const String homepage = "/homepage";
-  static const String Login = "/login";
-  static const String Register = "/register";
-  static const String SplashScreen = "/splashscreen";
-  static const String AddElementPage = "/addelementpage";
+  static const String login = "/login";
+  static const String register = "/register";
+  static const String splashScreen = "/splashscreen";
+  static const String addElementPage = "/addelementpage";
 }

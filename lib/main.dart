@@ -1,5 +1,5 @@
 import 'package:budget_tracker/router/router.dart';
-import 'package:budget_tracker/view/SplashScreen.dart';
+import 'package:budget_tracker/view/splashScreen.dart';
 import 'package:budget_tracker/view/auth/login.dart';
 import 'package:budget_tracker/view/homepage.dart';
 import 'package:firebase_core/firebase_core.dart';
