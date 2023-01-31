@@ -1,7 +1,8 @@
-import 'package:budget_tracker/controllers/validator.dart';
+import 'package:budget_tracker/controllers/addElementController.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import '../models/elementModel.dart';
 
 import '../constants.dart';
 import '../style.dart';
@@ -12,6 +13,7 @@ class AddElementPage extends StatelessWidget {
   TextEditingController elementName = TextEditingController();
   TextEditingController elementPrice = TextEditingController();
   TextEditingController elementType = TextEditingController();
+  DateRangePickerController elementDate = DateRangePickerController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,6 +55,7 @@ class AddElementPage extends StatelessWidget {
               ),
               SfDateRangePicker(
                 // rangeTextStyle: TextStyle(color: Colors.white),
+                controller: elementDate,
                 headerStyle: DateRangePickerHeaderStyle(
                   textAlign: TextAlign.center,
                   textStyle: const TextStyle(color: Colors.white),
@@ -102,7 +105,25 @@ class AddElementPage extends StatelessWidget {
                   height: 66,
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // print(elementDate.selectedDate);
+                      if (elementName.text.isEmpty ||
+                          elementPrice.text.isEmpty ||
+                          elementType.text.isEmpty) {
+                        addElement(
+                            "elements",
+                            elementName.text,
+                            num.parse(elementPrice.text),
+                            elementType.text,
+                            elementDate.selectedDate ?? DateTime.now());
+                        if (kDebugMode) {
+                          print("done");
+                        }
+                        elementName.clear();
+                        elementPrice.clear();
+                        elementType.clear();
+                      }
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(
                         elevatedButtonColor,

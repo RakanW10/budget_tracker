@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
       locale: const Locale('ar'),
       title: 'Material App',
       // initialRoute: RouterName.SplashScreen,
-      initialRoute: RouterName.homepage,
+      initialRoute: RouterName.addElementPage,
       getPages: routerApp,
     );
   }

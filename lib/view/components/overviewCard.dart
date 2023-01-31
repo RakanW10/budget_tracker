@@ -27,7 +27,7 @@ class OverviewCard extends StatelessWidget {
         child: Container(
           height: 200,
           width: 124,
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.only(left: 6, right: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             color: secondray_background, //! need to change
