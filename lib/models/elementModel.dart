@@ -38,4 +38,8 @@ class Element {
         "elementType": elementType,
         "elementDate": elementDate,
       };
+  @override
+  String toString() {
+    return "Element:  elementName = $elementName, elementPrice = $elementPrice, elementType = $elementType, elementDate = $elementDate";
+  }
 }
