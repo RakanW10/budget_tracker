@@ -9,6 +9,7 @@ class HomepageController extends GetxController {
   RxBool isHomepageLoading = true.obs;
   @override
   void onInit() async {
+    super.onInit();
     var userData = await FirebaseFirestore.instance
         .collection("users")
         .doc(storage.read("uid"))

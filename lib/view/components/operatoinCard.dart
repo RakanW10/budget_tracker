@@ -94,6 +94,5 @@ class OperationCard extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }

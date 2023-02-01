@@ -1,7 +1,5 @@
-import 'package:budget_tracker/style.dart';
 import 'package:budget_tracker/view/components/operatoinCard.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
 //! fake operations data
@@ -41,7 +39,7 @@ class OperatinoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: Get.height * 0.48,
       child: ListView.builder(
         itemCount: data.length,

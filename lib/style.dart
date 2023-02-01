@@ -6,7 +6,7 @@ var cards_background = const Color(0xFF000000);
 
 var secondray = const Color(0xFF7FC4DC);
 var secondray_background = const Color(0xFF28353A);
-var calenderBlackColor = Color.fromRGBO(0, 0, 0, 1);
+var calenderBlackColor = const Color.fromRGBO(0, 0, 0, 1);
 
 var cards_backgrond = const Color(0x0000000);
 

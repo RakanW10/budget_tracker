@@ -1,4 +1,3 @@
-import 'package:budget_tracker/controllers/validator.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
