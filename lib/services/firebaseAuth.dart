@@ -1,8 +1,9 @@
+import 'package:budget_tracker/Constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-normalSignUp(String email, String password) async {
+normalSignUp({required String email, required String password}) async {
   try {
     UserCredential user = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
@@ -24,13 +25,11 @@ normalSignUp(String email, String password) async {
   }
 }
 
-normalSignIn(String email, String password) async {
+normalSignIn({required String email, required String password}) async {
   try {
     UserCredential user = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
-    if (kDebugMode) {
-      print(user);
-    }
+    storage.write("uid", user.user!.uid);
   } on FirebaseAuthException catch (e) {
     if (e.code == "user-not-found") {
       return e.code;

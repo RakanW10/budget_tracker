@@ -1,5 +1,8 @@
 import 'package:budget_tracker/controllers/validator.dart';
+import 'package:budget_tracker/router/router.dart';
+import 'package:budget_tracker/services/firebaseAuth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../style.dart';
 import '../paints/mainCanva.dart';
@@ -91,7 +94,16 @@ class Signup extends StatelessWidget {
                     child: SizedBox(
                       height: 66,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          
+                          normalSignUp(
+                            email: userEmail.text,
+                            password: userPassword.text,
+                          );
+                          // Get.toNamed(RouterName.<-Page Name->);
+                          //! need to go to the page that take has informations
+                          //! like, total income and total obligations
+                        },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                             elevatedButtonColor,
@@ -130,7 +142,9 @@ class Signup extends StatelessWidget {
                       style: TextStyle(color: appGrayColor),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.offNamed(RouterName.login);
+                      },
                       child: Text(
                         "تسجيل الدخول",
                         style: TextStyle(color: elevatedButtonColor),

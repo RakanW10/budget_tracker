@@ -1,8 +1,4 @@
-import 'dart:io';
-
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:budget_tracker/models/elementModel.dart' as e;
-import 'dart:convert' as convert;
 
 class User {
   String uid;
@@ -10,7 +6,7 @@ class User {
   String? personal_image;
   num income;
   num total_obligations_amount;
-  List<e.Element>? elements;
+  List<e.Element> elements;
 
   User({
     required this.uid,
@@ -27,7 +23,6 @@ class User {
     for (var element in json["elements"]) {
       tempElements.add(e.Element.fromJson(element));
     }
-
     return User(
       total_obligations_amount: json["total_obligations_amount"],
       income: json["income"],
@@ -36,6 +31,21 @@ class User {
       personal_image: json["personal_image"],
       elements: tempElements,
     );
+  }
+  Map<String, dynamic> toJson() {
+    List elementsData = [];
+    for (var e in elements) {
+      elementsData.add(e.toJson());
+    }
+    Map<String, dynamic> data = {};
+    data["uid"] = uid;
+    data["name"] = name;
+    data["personal_image"] = personal_image;
+    data["income"] = income;
+    data["total_obligations_amount"] = total_obligations_amount;
+    data["elements"] = elementsData;
+
+    return data;
   }
 
   @override

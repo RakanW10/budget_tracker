@@ -10,7 +10,7 @@ import '../view/auth/login.dart';
 List<GetPage<dynamic>> routerApp = [
   GetPage(
     name: RouterName.homepage,
-    page: () => const Homepage(),
+    page: () =>  Homepage(),
     binding: HomepageBinding(),
   ),
   GetPage(

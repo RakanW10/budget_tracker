@@ -1,7 +1,11 @@
+import 'package:budget_tracker/Constants.dart';
 import 'package:budget_tracker/controllers/validator.dart';
+import 'package:budget_tracker/router/router.dart';
+import 'package:budget_tracker/services/firebaseAuth.dart';
 import 'package:budget_tracker/style.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../paints/mainCanva.dart';
 import '../widgets/customInputFiled.dart';
 
@@ -77,10 +81,11 @@ class Login extends StatelessWidget {
                       height: 66,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (kDebugMode) {
-                            print(userEmail.text);
-                            print(userPassword.text);
-                          }
+                          var user = normalSignIn(
+                            email: userEmail.text,
+                            password: userPassword.text,
+                          );
+                          Get.offAllNamed(RouterName.homepage);
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
@@ -120,7 +125,9 @@ class Login extends StatelessWidget {
                       style: TextStyle(color: appGrayColor),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.offNamed(RouterName.register);
+                      },
                       child: Text(
                         "تسجيل جديد",
                         style: TextStyle(color: elevatedButtonColor),
