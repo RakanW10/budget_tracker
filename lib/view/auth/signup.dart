@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:budget_tracker/controllers/validator.dart';
 import 'package:budget_tracker/router/router.dart';
 import 'package:budget_tracker/services/firebaseAuth.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../style.dart';
 import '../paints/mainCanva.dart';
@@ -94,15 +96,22 @@ class Signup extends StatelessWidget {
                     child: SizedBox(
                       height: 66,
                       child: ElevatedButton(
-                        onPressed: () {
-                          
-                          normalSignUp(
-                            email: userEmail.text,
-                            password: userPassword.text,
-                          );
-                          // Get.toNamed(RouterName.<-Page Name->);
-                          //! need to go to the page that take has informations
-                          //! like, total income and total obligations
+                        onPressed: () async {
+                          if (userPassword.text != userPassword1.text) {
+                            if (kDebugMode) {
+                              print("password not match");
+                              Get.snackbar("error", "error in match password");
+                              return;
+                            }
+                          } else {
+                            var x = await normalSignUp(
+                                userEmail.text, userPassword.text);
+                            if (x == null) {
+                              Get.snackbar("Error", "Error in signup");
+                              return;
+                            }
+                          }
+                          Get.toNamed(RouterName.login);
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
@@ -143,7 +152,7 @@ class Signup extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Get.offNamed(RouterName.login);
+                        Get.toNamed(RouterName.login);
                       },
                       child: Text(
                         "تسجيل الدخول",
@@ -165,7 +174,10 @@ class Signup extends StatelessWidget {
                     child: SizedBox(
                       height: 66,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          signInWithGoogle();
+                          Get.toNamed(RouterName.homepage);
+                        },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                             Colors.white,

@@ -1,7 +1,9 @@
 import 'package:budget_tracker/controllers/addElementController.dart';
+import 'package:budget_tracker/router/router.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../constants.dart';
@@ -23,11 +25,10 @@ class _AddElementPageState extends State<AddElementPage> {
   DateRangePickerController elementDate = DateRangePickerController();
 
   var elementTypes = ["طعام", "مواصلات", "فواتير", "تسوق", "دخل"];
+  String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
-    String? selectedValue;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: backgroundColor,
@@ -41,8 +42,8 @@ class _AddElementPageState extends State<AddElementPage> {
           ),
         ),
         actions: [
-          storage.read("personal-image") != null
-              ? Image.network(storage.read("personal-image"))
+          storage.read("personal_image") != null
+              ? Image.network(storage.read("personal_image"))
               : Image.asset("assets/images/defualtImage.png"),
         ],
       ),
@@ -136,6 +137,7 @@ class _AddElementPageState extends State<AddElementPage> {
                     setState(() {
                       selectedValue = value;
                     });
+                    // print(selectedValue);
                   },
                   icon: const Icon(
                     Icons.arrow_forward_ios_outlined,
@@ -180,6 +182,7 @@ class _AddElementPageState extends State<AddElementPage> {
                 child: ElevatedButton(
                   onPressed: () {
                     // print(elementDate.selectedDate);
+                    // print(selectedValue);s
                     if (elementName.text.isNotEmpty ||
                         elementPrice.text.isNotEmpty ||
                         selectedValue!.isNotEmpty ||
@@ -195,6 +198,7 @@ class _AddElementPageState extends State<AddElementPage> {
                       }
                       elementName.clear();
                       elementPrice.clear();
+                      Get.toNamed(RouterName.homepage);
                     }
                   },
                   style: ButtonStyle(

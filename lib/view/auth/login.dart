@@ -1,11 +1,14 @@
-import 'package:budget_tracker/Constants.dart';
+import 'package:budget_tracker/constants.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 import 'package:budget_tracker/controllers/validator.dart';
 import 'package:budget_tracker/router/router.dart';
 import 'package:budget_tracker/services/firebaseAuth.dart';
 import 'package:budget_tracker/style.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import '../paints/mainCanva.dart';
 import '../widgets/customInputFiled.dart';
 
@@ -80,12 +83,18 @@ class Login extends StatelessWidget {
                     child: SizedBox(
                       height: 66,
                       child: ElevatedButton(
-                        onPressed: () {
-                          var user = normalSignIn(
-                            email: userEmail.text,
-                            password: userPassword.text,
+                        onPressed: () async {
+                          UserCredential? user = await normalSignIn(
+                            userEmail.text,
+                            userPassword.text,
                           );
-                          Get.offAllNamed(RouterName.homepage);
+                          
+                          // if (user == null && user!.user!.uid.isEmpty) {
+                          //   Get.snackbar('Error', 'Error');
+                          //   return;
+                          // }
+                          storage.write('uid', user!.user!.uid);
+                          Get.toNamed(RouterName.homepage);
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
@@ -126,7 +135,7 @@ class Login extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        Get.offNamed(RouterName.register);
+                        Get.toNamed(RouterName.register);
                       },
                       child: Text(
                         "تسجيل جديد",
@@ -148,7 +157,10 @@ class Login extends StatelessWidget {
                     child: SizedBox(
                       height: 66,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          signInWithGoogle();
+                          Get.toNamed(RouterName.homepage);
+                        },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                             Colors.white,

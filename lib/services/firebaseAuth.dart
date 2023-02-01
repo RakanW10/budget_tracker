@@ -3,44 +3,60 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-normalSignUp({required String email, required String password}) async {
+Future<UserCredential?> normalSignUp(String email, String password) async {
   try {
-    UserCredential user = await FirebaseAuth.instance
+    UserCredential? user = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
     if (kDebugMode) {
-      print(user);
+      print("user here = $user");
     }
+    print("done");
     return user;
   } on FirebaseAuthException catch (e) {
     if (e.code == "weak-password") {
-      return e.code;
+      // return e.code;
+      print("weak password");
+      return null;
     } else if (e.code == "email-already-in-use") {
-      return e.code;
+      // return e.code;
+      print("email already in use");
+      return null;
     }
   } catch (e) {
     if (kDebugMode) {
       print(e);
     }
-    return e;
+    // return e;
+    return null;
   }
 }
 
-normalSignIn({required String email, required String password}) async {
+Future<UserCredential?> normalSignIn(String email, String password) async {
   try {
     UserCredential user = await FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: password);
-    storage.write("uid", user.user!.uid);
+    if (kDebugMode) {
+      print("user here = $user");
+    }
+    return user;
+    // await user.sendEmailVerification();
   } on FirebaseAuthException catch (e) {
     if (e.code == "user-not-found") {
-      return e.code;
+      // return e.code;
+      if (kDebugMode) {
+        print("user not found");
+      }
+      return null;
     } else if (e.code == "wrong-password") {
-      return e.code;
+      // return e.code;
+      return null;
     }
   } catch (e) {
     if (kDebugMode) {
       print(e);
     }
-    return e;
+    // return e;
+    return null;
   }
 }
 

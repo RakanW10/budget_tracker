@@ -2,8 +2,8 @@ import 'package:budget_tracker/router/router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'firebase_options.dart';
 
@@ -45,3 +45,5 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// abomoaz3375@gmail.com // Password.123 => created user

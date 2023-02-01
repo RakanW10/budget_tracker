@@ -50,9 +50,9 @@ class Homepage extends StatelessWidget {
                                 onTap: () {
                                   //TODO Enter the Profile
                                 },
-                                child: storage.read("personal-image") != null
+                                child: storage.read("personal_image") != null
                                     ? Image.network(
-                                        storage.read("personal-image"))
+                                        storage.read("personal_image"))
                                     : Image.asset(
                                         "assets/images/defualtImage.png"),
                               ),
