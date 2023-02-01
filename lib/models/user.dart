@@ -21,22 +21,13 @@ class User {
     required this.elements,
   });
 
-  //! need to complete, i will to it Tomorrow ;)
   factory User.fromJson({required Map<String, dynamic> json}) {
     // find and create elements object
     List<e.Element>? tempElements = [];
-    for (var element in json["elementsIDs"]) {
-      var elementData = FirebaseFirestore.instance
-          .collection("elements")
-          .doc(element)
-          .get()
-          .then(
-            (value) => {
-              print(value.data()),
-              tempElements.add(e.Element.fromJson(value.data()!))
-            },
-          );
+    for (var element in json["elements"]) {
+      tempElements.add(e.Element.fromJson(element));
     }
+
     return User(
       total_obligations_amount: json["total_obligations_amount"],
       income: json["income"],
