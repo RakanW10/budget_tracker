@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:budget_tracker/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Element {
