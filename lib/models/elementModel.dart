@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:budget_tracker/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Element {
   Element({
@@ -9,12 +9,14 @@ class Element {
     required this.elementPrice,
     required this.elementType,
     required this.elementDate,
+    required this.userCredential,
   });
 
   final String elementName;
   final num elementPrice;
   final String elementType;
   final DateTime elementDate;
+  String userCredential;
 
   factory Element.fromRawJson(String str) => Element.fromJson(json.decode(str));
 
@@ -30,6 +32,7 @@ class Element {
       elementPrice: json["elementPrice"],
       elementType: json["elementType"],
       elementDate: dt,
+      userCredential: json["userCredential"],
     );
   }
 
@@ -38,6 +41,7 @@ class Element {
         "elementPrice": elementPrice,
         "elementType": elementType,
         "elementDate": elementDate,
+        "userCredential": userCredential,
       };
   @override
   String toString() {

@@ -1,5 +1,10 @@
-import 'package:budget_tracker/controllers/validator.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'package:budget_tracker/controllers/validator.dart';
+import 'package:budget_tracker/router/router.dart';
+import 'package:budget_tracker/services/firebaseAuth.dart';
 
 import '../../style.dart';
 import '../paints/mainCanva.dart';
@@ -91,7 +96,23 @@ class Signup extends StatelessWidget {
                     child: SizedBox(
                       height: 66,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          if (userPassword.text != userPassword1.text) {
+                            if (kDebugMode) {
+                              print("password not match");
+                              Get.snackbar("error", "error in match password");
+                              return;
+                            }
+                          } else {
+                            var x = await normalSignUp(
+                                userEmail.text, userPassword.text);
+                            if (x == null) {
+                              Get.snackbar("Error", "Error in signup");
+                              return;
+                            }
+                          }
+                          Get.toNamed(RouterName.login);
+                        },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                             elevatedButtonColor,
@@ -130,7 +151,9 @@ class Signup extends StatelessWidget {
                       style: TextStyle(color: appGrayColor),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.toNamed(RouterName.login);
+                      },
                       child: Text(
                         "تسجيل الدخول",
                         style: TextStyle(color: elevatedButtonColor),
@@ -151,7 +174,10 @@ class Signup extends StatelessWidget {
                     child: SizedBox(
                       height: 66,
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          signInWithGoogle();
+                          Get.toNamed(RouterName.homepage);
+                        },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
                             Colors.white,
