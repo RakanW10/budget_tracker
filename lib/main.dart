@@ -46,4 +46,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
-// abomoaz3375@gmail.com // Password.123 => created user
+// abomoaz3375@gmail.com // Qwerty.123 => created user
