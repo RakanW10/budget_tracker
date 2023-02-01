@@ -22,7 +22,7 @@ class _AddElementPageState extends State<AddElementPage> {
 
   DateRangePickerController elementDate = DateRangePickerController();
 
-  var elementTypes = ["طعام", "مواصلات", "مستلزمات", "فواتير", "تسوق", "دخل"];
+  var elementTypes = ["طعام", "مواصلات", "فواتير", "تسوق", "دخل"];
 
   @override
   Widget build(BuildContext context) {
