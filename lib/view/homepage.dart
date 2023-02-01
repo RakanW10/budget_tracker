@@ -1,4 +1,5 @@
 import 'package:budget_tracker/constants.dart';
+import 'package:budget_tracker/router/router.dart';
 import 'package:budget_tracker/style.dart';
 import 'package:budget_tracker/view/components/operationList.dart';
 import 'package:budget_tracker/view/components/overviewList.dart';
@@ -13,16 +14,25 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double WIDTH = Get.width;
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: backgroundColor,
-        body: Stack(
-          children: [
-            CustomPaint(
-              size: Size(WIDTH, (WIDTH * 1.0692307692307692).toDouble()),
-              painter: homepageBackgrund(),
-            ),
-            ListView(
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: secondray_background,
+        onPressed: () {
+          Get.toNamed(RouterName.addElementPage);
+        },
+        child: const Icon(
+          Icons.add,
+        ),
+      ),
+      body: Stack(
+        children: [
+          CustomPaint(
+            size: Size(WIDTH, (WIDTH * 1.0692307692307692).toDouble()),
+            painter: homepageBackgrund(),
+          ),
+          SafeArea(
+            child: ListView(
               children: [
                 Padding(
                   padding:
@@ -104,8 +114,8 @@ class Homepage extends StatelessWidget {
                 ),
               ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

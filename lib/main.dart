@@ -1,3 +1,4 @@
+import 'package:budget_tracker/controllers/homepageController.dart';
 import 'package:budget_tracker/router/router.dart';
 import 'package:budget_tracker/view/splashScreen.dart';
 import 'package:budget_tracker/view/auth/login.dart';
@@ -31,6 +32,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // !jsut for test
+    HomepageController c = Get.put(HomepageController());
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
@@ -44,8 +47,8 @@ class MyApp extends StatelessWidget {
       ],
       locale: const Locale('ar'),
       title: 'Material App',
-      // initialRoute: RouterName.SplashScreen,
-      initialRoute: RouterName.addElementPage,
+      initialRoute: RouterName.homepage,
+      // initialRoute: RouterName.addElementPage,
       getPages: routerApp,
     );
   }
