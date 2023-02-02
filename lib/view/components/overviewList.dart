@@ -26,7 +26,6 @@ class OverviewList extends StatelessWidget {
             mainText: "مجموع الصرف الشهرية",
             amount: total_exchange_rate.toStringAsFixed(2),
             SAR: true,
-            
           ),
           const SizedBox(
             width: 18,
@@ -35,7 +34,7 @@ class OverviewList extends StatelessWidget {
             icon: SvgPicture.asset("assets/icons/Wallet.svg"),
             mainText: "معدل الصرف الشهري",
             amount: monthly_exchange_rate.toStringAsFixed(2),
-            
+            SAR: true,
           ),
           const SizedBox(
             width: 18,
@@ -44,7 +43,6 @@ class OverviewList extends StatelessWidget {
             icon: SvgPicture.asset("assets/icons/Wallet.svg"),
             mainText: "معدل الالتزامات الشهرية",
             amount: monthly_obligations_rate.toStringAsFixed(2),
-            
           ),
         ],
       ),

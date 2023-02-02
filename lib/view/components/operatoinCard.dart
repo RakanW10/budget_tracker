@@ -7,13 +7,13 @@ class OperationCard extends StatelessWidget {
     super.key,
     required this.iconPath,
     required this.title,
-    required this.data,
+    required this.date,
     required this.amount,
     required this.paymentMethod,
   });
   final String iconPath;
   final String title;
-  final String data;
+  final DateTime date;
   final num amount;
   final String paymentMethod;
 
@@ -52,7 +52,7 @@ class OperationCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  data,
+                  "${date.year}-${date.month}-${date.day}",
                   style: TextStyle(
                     fontSize: 14,
                     color: text_secondray,

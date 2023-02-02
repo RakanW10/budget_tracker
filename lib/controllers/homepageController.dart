@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomepageController extends GetxController {
-  User? user;
+  OurUser? user;
   RxBool isHomepageLoading = true.obs;
 
   @override
@@ -15,11 +15,14 @@ class HomepageController extends GetxController {
         .collection("users")
         .doc(storage.read("uid"))
         .get();
-    user = User.fromJson(json: userData.data()!);
+    user = OurUser.fromJson(json: userData.data()!);
+    user!.elements.sort((a, b) {
+      return b.elementDate.compareTo(a.elementDate);
+    });
     isHomepageLoading = false.obs;
     update();
   }
-  
+
   double monthly_obligations_rate() {
     return user!.total_obligations_amount / user!.income * 100;
   }
@@ -27,7 +30,9 @@ class HomepageController extends GetxController {
   double monthly_exchange_rate() {
     double total_monthly_exchange = 0;
     for (var element in user!.elements) {
-      total_monthly_exchange += element.elementPrice;
+      if (element.elementPrice < 0) {
+        total_monthly_exchange += element.elementPrice.abs();
+      }
     }
     var numberOfDaysInMonth =
         DateUtils.getDaysInMonth(DateTime.now().year, DateTime.now().month);
@@ -39,11 +44,11 @@ class HomepageController extends GetxController {
 
     for (var element in user!.elements) {
       if ((DateTime.now().year == element.elementDate.year) &&
-          (DateTime.now().month == element.elementDate.month)) {
-        total_monthly_exchange += element.elementPrice;
+          (DateTime.now().month == element.elementDate.month) &&
+          (element.elementPrice < 0)) {
+        total_monthly_exchange += element.elementPrice.abs();
       }
     }
-
     return total_monthly_exchange;
   }
 }
