@@ -26,11 +26,11 @@ class _AddElementPageState extends State<AddElementPage> {
   DateRangePickerController elementDate = DateRangePickerController();
 
   // var elementTypes = ["طعام", "مواصلات", "فواتير", "تسوق", "دخل"];
-  var elementTypes = ["Food", "Transport", "Bill", "Shopping", "income"];
+  var elementTypes = ["Food", "Transport", /* "Bill", */ "Shopping", "income"];
   var elementPayTypes = ["cash", "apple-pay", "stc-pay", "card"];
   String? selectedValue;
   String? selectedValue1;
-  int? selectedValue2;
+  int? selectedValue2 = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -108,13 +108,13 @@ class _AddElementPageState extends State<AddElementPage> {
                   activeFgColor: Colors.white,
                   inactiveBgColor: Colors.grey,
                   inactiveFgColor: Colors.white,
-                  initialLabelIndex: 1,
+                  initialLabelIndex: selectedValue2,
                   totalSwitches: 2,
                   labels: const ['دخل', 'مصروف'],
                   radiusStyle: true,
                   onToggle: (index) {
                     setState(() {
-                      selectedValue2 = index ?? 1;
+                      selectedValue2 = index;
                     });
                     // print('switched to: $index');
                   },

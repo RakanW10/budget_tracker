@@ -1,7 +1,13 @@
 import 'package:budget_tracker/constants.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+// import 'package:get/get.dart';
+// import 'package:get/get_core/src/get_main.dart';
+// import 'homePageController.dart' as h;
 import 'package:budget_tracker/models/elementModel.dart';
+
+// import 'homePageController.dart';
+
+// final HomepageController _homepageController = Get.find();
 
 addElement(String elementName, num elementPrice, String elementType,
     DateTime elementDate, String elementPayType, int? inOrOut) async {
@@ -21,4 +27,5 @@ addElement(String elementName, num elementPrice, String elementType,
     },
     SetOptions(merge: true),
   );
+  // _homepageController.addElementTemp();
 }

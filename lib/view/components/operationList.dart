@@ -11,7 +11,7 @@ var icons = {
 };
 
 class OperatinoList extends StatelessWidget {
-  OperatinoList({super.key, required this.operations});
+  const OperatinoList({super.key, required this.operations});
   final List<e.Element> operations;
 
   @override
@@ -25,7 +25,7 @@ class OperatinoList extends StatelessWidget {
               title: operations[index].elementName,
               date: operations[index].elementDate,
               amount: operations[index].elementPrice,
-              paymentMethod: "نقدا",
+              paymentMethod: operations[index].elementPayType,
             )),
       ),
     );

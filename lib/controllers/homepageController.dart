@@ -23,6 +23,19 @@ class HomepageController extends GetxController {
     update();
   }
 
+  // Future<void> addElementTemp() async {
+  //   var userData = await FirebaseFirestore.instance
+  //       .collection("users")
+  //       .doc(storage.read("uid"))
+  //       .get();
+  //   user = OurUser.fromJson(json: userData.data()!);
+  //   user!.elements.sort((a, b) {
+  //     return b.elementDate.compareTo(a.elementDate);
+  //   });
+  //   isHomepageLoading = false.obs;
+  //   update();
+  // }
+
   double monthly_obligations_rate() {
     return user!.total_obligations_amount / user!.income * 100;
   }
