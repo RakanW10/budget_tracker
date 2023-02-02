@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomepageController extends GetxController {
-  User? user;
+  OurUser? user;
   RxBool isHomepageLoading = true.obs;
   @override
   void onInit() async {
@@ -14,7 +14,7 @@ class HomepageController extends GetxController {
         .collection("users")
         .doc(storage.read("uid"))
         .get();
-    user = User.fromJson(json: userData.data()!);
+    user = OurUser.fromJson(json: userData.data()!);
     isHomepageLoading = false.obs;
     update();
   }
