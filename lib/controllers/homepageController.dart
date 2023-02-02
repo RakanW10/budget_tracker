@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 class HomepageController extends GetxController {
   User? user;
   RxBool isHomepageLoading = true.obs;
+
   @override
   void onInit() async {
     var userData = await FirebaseFirestore.instance
