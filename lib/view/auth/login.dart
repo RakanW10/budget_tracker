@@ -1,6 +1,5 @@
 import 'package:budget_tracker/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -88,7 +87,7 @@ class Login extends StatelessWidget {
                             userEmail.text,
                             userPassword.text,
                           );
-                          
+
                           // if (user == null && user!.user!.uid.isEmpty) {
                           //   Get.snackbar('Error', 'Error');
                           //   return;
