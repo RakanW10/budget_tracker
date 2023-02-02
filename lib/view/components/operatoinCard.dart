@@ -14,7 +14,7 @@ class OperationCard extends StatelessWidget {
   final String iconPath;
   final String title;
   final String data;
-  final double amount;
+  final num amount;
   final String paymentMethod;
 
   @override

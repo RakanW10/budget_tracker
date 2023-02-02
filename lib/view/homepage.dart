@@ -124,7 +124,9 @@ class Homepage extends StatelessWidget {
                               const SizedBox(
                                 height: 16,
                               ),
-                              const OperatinoList(),
+                              OperatinoList(
+                                operations: _homepageController.user!.elements,
+                              ),
                             ],
                           ),
                         ),

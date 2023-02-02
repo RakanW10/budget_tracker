@@ -1,6 +1,7 @@
 import 'package:budget_tracker/view/components/operatoinCard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:budget_tracker/models/elementModel.dart' as e;
 
 //! fake operations data
 var data = [
@@ -35,20 +36,21 @@ var data = [
 ];
 
 class OperatinoList extends StatelessWidget {
-  const OperatinoList({super.key});
+  OperatinoList({super.key, required this.operations});
+  final List<e.Element> operations;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: Get.height * 0.48,
       child: ListView.builder(
-        itemCount: data.length,
+        itemCount: operations.length,
         itemBuilder: ((context, index) => OperationCard(
-              iconPath: data[index]["iconPath"].toString(),
-              title: data[index]["title"].toString(),
-              data: data[index]["date"].toString(),
-              amount: data[index]["amount"] as double,
-              paymentMethod: data[index]["paymentMethod"].toString(),
+              iconPath: "assets/icons/shopping-bags.svg",
+              title: operations[index].elementName,
+              data: operations[index].elementDate.toString(),
+              amount: operations[index].elementPrice,
+              paymentMethod: "نقدا",
             )),
       ),
     );

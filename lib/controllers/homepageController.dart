@@ -19,7 +19,7 @@ class HomepageController extends GetxController {
     isHomepageLoading = false.obs;
     update();
   }
-
+  
   double monthly_obligations_rate() {
     return user!.total_obligations_amount / user!.income * 100;
   }
