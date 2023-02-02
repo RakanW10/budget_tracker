@@ -1,54 +1,31 @@
 import 'package:budget_tracker/view/components/operatoinCard.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:budget_tracker/models/elementModel.dart' as e;
 
-//! fake operations data
-var data = [
-  {
-    "iconPath": "assets/icons/fast-food.svg",
-    "title": "طعام",
-    "date": "28 May 2020",
-    "amount": -25.50,
-    "paymentMethod": "نقدًا"
-  },
-  {
-    "iconPath": "assets/icons/bike.svg",
-    "title": "Uber",
-    "date": "26 May 2020",
-    "amount": -40.13,
-    "paymentMethod": "apply pay"
-  },
-  {
-    "iconPath": "assets/icons/hand-money-dollar-coin-icon.svg",
-    "title": "الراتب",
-    "date": "1 May 2020",
-    "amount": 15000.00,
-    "paymentMethod": "بنك"
-  },
-  {
-    "iconPath": "assets/icons/shopping-bags.svg",
-    "title": "Nike",
-    "date": "26 Feb 2020",
-    "amount": -850.00,
-    "paymentMethod": "apply pay"
-  },
-];
+var icons = {
+  "Food": "assets/icons/fast-food.svg",
+  "Shopping": "assets/icons/shopping-bags.svg",
+  "Transport": "assets/icons/bike.svg",
+  "Income": "assets/icons/hand-money-dollar-coin-icon.svg",
+};
 
 class OperatinoList extends StatelessWidget {
-  const OperatinoList({super.key});
+  OperatinoList({super.key, required this.operations});
+  final List<e.Element> operations;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Get.height * 0.48,
+      height: Get.height * 0.40,
       child: ListView.builder(
-        itemCount: data.length,
+        itemCount: operations.length,
         itemBuilder: ((context, index) => OperationCard(
-              iconPath: data[index]["iconPath"].toString(),
-              title: data[index]["title"].toString(),
-              data: data[index]["date"].toString(),
-              amount: data[index]["amount"] as double,
-              paymentMethod: data[index]["paymentMethod"].toString(),
+              iconPath: icons[operations[index].elementType]!,
+              title: operations[index].elementName,
+              date: operations[index].elementDate,
+              amount: operations[index].elementPrice,
+              paymentMethod: "نقدا",
             )),
       ),
     );
