@@ -7,12 +7,14 @@ class Element {
     required this.elementPrice,
     required this.elementType,
     required this.elementDate,
+    required this.elementPayType,
   });
 
   final String elementName;
   final num elementPrice;
   final String elementType;
   final DateTime elementDate;
+  final String elementPayType;
 
   factory Element.fromRawJson(String str) => Element.fromJson(json.decode(str));
 
@@ -28,6 +30,7 @@ class Element {
       elementPrice: json["elementPrice"],
       elementType: json["elementType"],
       elementDate: dt,
+      elementPayType: json["elementPayType"],
     );
   }
 
@@ -36,9 +39,10 @@ class Element {
         "elementPrice": elementPrice,
         "elementType": elementType,
         "elementDate": elementDate,
+        "elementPayType": elementPayType,
       };
   @override
   String toString() {
-    return "Element:  elementName = $elementName, elementPrice = $elementPrice, elementType = $elementType, elementDate = $elementDate";
+    return "Element:  elementName = $elementName, elementPrice = $elementPrice, elementType = $elementType, elementDate = $elementDate, elementPayType = $elementPayType ";
   }
 }

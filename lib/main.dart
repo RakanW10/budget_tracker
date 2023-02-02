@@ -1,3 +1,4 @@
+import 'package:budget_tracker/constants.dart';
 import 'package:budget_tracker/router/router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
       ],
       locale: const Locale('ar'),
       title: 'Material App',
-      initialRoute: RouterName.login,
+      initialRoute:
+          storage.read('uid') != null ? RouterName.homepage : RouterName.login,
       // initialRoute: RouterName.addElementPage,
       getPages: routerApp,
     );

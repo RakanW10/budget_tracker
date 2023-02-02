@@ -1,5 +1,6 @@
 // import 'package:budget_tracker/models/user.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:budget_tracker/models/user.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,9 +9,15 @@ Future<UserCredential?> normalSignUp(String email, String password) async {
   try {
     UserCredential? user = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
-    // await FirebaseFirestore.instance.collection('users').doc(user.user!.uid);
-    // .set(OurUser(uid: user.user.uid, name: "", personal_image: "", income: 0, total_obligations_amount: 0, elements: []));
 
+    FirebaseFirestore.instance.collection('users').doc(user.user!.uid).set(
+        OurUser(
+            uid: user.user!.uid,
+            name: "",
+            personal_image: "",
+            income: 0,
+            total_obligations_amount: 0,
+            elements: []).toJson());
     return user;
   } on FirebaseAuthException catch (e) {
     if (e.code == "weak-password") {

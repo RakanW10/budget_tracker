@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
+import 'package:toggle_switch/toggle_switch.dart';
 
 import '../constants.dart';
 import '../style.dart';
@@ -25,7 +26,10 @@ class _AddElementPageState extends State<AddElementPage> {
   DateRangePickerController elementDate = DateRangePickerController();
 
   var elementTypes = ["طعام", "مواصلات", "فواتير", "تسوق", "دخل"];
+  var elementPayTypes = ["cash", "apple-pay", "stc-pay", "card"];
   String? selectedValue;
+  String? selectedValue1;
+  int? selectedValue2;
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +95,33 @@ class _AddElementPageState extends State<AddElementPage> {
               inputType: InputType.number,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 16),
+              padding: const EdgeInsets.only(top: 16, left: 32, right: 32),
+              child: Center(
+                child: ToggleSwitch(
+                  minWidth: 90.0,
+                  cornerRadius: 20.0,
+                  activeBgColors: [
+                    [Colors.green[800]!],
+                    [Colors.red[800]!]
+                  ],
+                  activeFgColor: Colors.white,
+                  inactiveBgColor: Colors.grey,
+                  inactiveFgColor: Colors.white,
+                  initialLabelIndex: 1,
+                  totalSwitches: 2,
+                  labels: const ['دخل', 'مصروف'],
+                  radiusStyle: true,
+                  onToggle: (index) {
+                    setState(() {
+                      selectedValue2 = index ?? 1;
+                    });
+                    // print('switched to: $index');
+                  },
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 16, left: 32, right: 32),
               child: DropdownButtonHideUnderline(
                 child: DropdownButton2(
                   isExpanded: true,
@@ -137,7 +167,6 @@ class _AddElementPageState extends State<AddElementPage> {
                     setState(() {
                       selectedValue = value;
                     });
-                    // print(selectedValue);
                   },
                   icon: const Icon(
                     Icons.arrow_forward_ios_outlined,
@@ -174,6 +203,90 @@ class _AddElementPageState extends State<AddElementPage> {
               ),
             ),
             Padding(
+              padding: const EdgeInsets.only(top: 16, left: 32, right: 32),
+              child: DropdownButtonHideUnderline(
+                child: DropdownButton2(
+                  isExpanded: true,
+                  hint: Row(
+                    children: const [
+                      Icon(
+                        Icons.list,
+                        size: 16,
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Expanded(
+                        child: Text(
+                          '                     اختر طريقة الدفع',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  items: elementPayTypes
+                      .map((item) => DropdownMenuItem<String>(
+                            value: item,
+                            child: Text(
+                              item,
+                              style: const TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ))
+                      .toList(),
+                  value: selectedValue1,
+                  onChanged: (value) {
+                    setState(() {
+                      selectedValue1 = value;
+                    });
+                    // print(selectedValue);
+                  },
+                  icon: const Icon(
+                    Icons.arrow_forward_ios_outlined,
+                  ),
+                  iconSize: 14,
+                  iconEnabledColor: Colors.white,
+                  iconDisabledColor: Colors.grey,
+                  buttonHeight: 66,
+                  buttonWidth: 300,
+                  buttonPadding: const EdgeInsets.only(left: 14, right: 14),
+                  buttonDecoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    border: Border.all(
+                      color: Colors.black26,
+                    ),
+                    color: elevatedButtonColor,
+                  ),
+                  buttonElevation: 2,
+                  itemHeight: 40,
+                  itemPadding: const EdgeInsets.only(left: 14, right: 14),
+                  dropdownMaxHeight: 200,
+                  dropdownWidth: 200,
+                  dropdownPadding: null,
+                  dropdownDecoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(14),
+                    color: elevatedButtonColor,
+                  ),
+                  dropdownElevation: 8,
+                  scrollbarRadius: const Radius.circular(40),
+                  scrollbarThickness: 6,
+                  scrollbarAlwaysShow: true,
+                  offset: const Offset(-20, 0),
+                ),
+              ),
+            ),
+
+            Padding(
               padding: const EdgeInsets.only(
                   left: 32, right: 32, bottom: 20, top: 22),
               child: SizedBox(
@@ -188,11 +301,12 @@ class _AddElementPageState extends State<AddElementPage> {
                         selectedValue!.isNotEmpty ||
                         selectedValue != null) {
                       addElement(
-                          "elements",
                           elementName.text,
                           num.parse(elementPrice.text),
                           selectedValue!,
-                          elementDate.selectedDate ?? DateTime.now());
+                          elementDate.selectedDate ?? DateTime.now(),
+                          selectedValue1!,
+                          selectedValue2!);
                       if (kDebugMode) {
                         print("done");
                       }
