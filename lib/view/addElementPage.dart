@@ -25,8 +25,7 @@ class _AddElementPageState extends State<AddElementPage> {
 
   DateRangePickerController elementDate = DateRangePickerController();
 
-  // var elementTypes = ["طعام", "مواصلات", "فواتير", "تسوق", "دخل"];
-  var elementTypes = ["Food", "Transport", /* "Bill", */ "Shopping", "income"];
+  var elementTypes = ["Food", "Transport", "Bill", "Shopping", "Income"];
   var elementPayTypes = ["cash", "apple-pay", "stc-pay", "card"];
   String? selectedValue;
   String? selectedValue1;

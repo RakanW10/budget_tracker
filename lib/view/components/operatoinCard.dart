@@ -33,7 +33,10 @@ class OperationCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               color: secondray_background,
             ),
-            child: SvgPicture.asset(iconPath),
+            child: SvgPicture.asset(
+              iconPath,
+              color: secondray,
+            ),
           ),
           const SizedBox(
             width: 8,

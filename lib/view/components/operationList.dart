@@ -8,6 +8,7 @@ var icons = {
   "Shopping": "assets/icons/shopping-bags.svg",
   "Transport": "assets/icons/bike.svg",
   "Income": "assets/icons/hand-money-dollar-coin-icon.svg",
+  "Bill": "assets/icons/receipt.svg"
 };
 
 class OperatinoList extends StatelessWidget {

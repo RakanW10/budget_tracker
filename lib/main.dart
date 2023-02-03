@@ -42,7 +42,6 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       initialRoute:
           storage.read('uid') != null ? RouterName.homepage : RouterName.login,
-      // initialRoute: RouterName.addElementPage,
       getPages: routerApp,
     );
   }
