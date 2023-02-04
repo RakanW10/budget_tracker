@@ -25,8 +25,9 @@ class _AddElementPageState extends State<AddElementPage> {
 
   DateRangePickerController elementDate = DateRangePickerController();
 
-  var elementTypes = ["Food", "Transport", "Bill", "Shopping", "Income"];
+  var elementTypes = ["Food", "Transport", "Bill", "Shopping"];
   var elementPayTypes = ["cash", "apple-pay", "stc-pay", "card"];
+  var elementPayTypes2 = ["راتب", "عمل حر", "اخرى"];
   String? selectedValue;
   String? selectedValue1;
   int? selectedValue2 = 1;
@@ -294,7 +295,91 @@ class _AddElementPageState extends State<AddElementPage> {
                       ),
                     ),
                   )
-                : const SizedBox(),
+                : Padding(
+                    padding:
+                        const EdgeInsets.only(top: 16, left: 32, right: 32),
+                    child: DropdownButtonHideUnderline(
+                      child: DropdownButton2(
+                        isExpanded: true,
+                        hint: Row(
+                          children: const [
+                            Icon(
+                              Icons.list,
+                              size: 16,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 4,
+                            ),
+                            Expanded(
+                              child: Text(
+                                '                     اختر النوع',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ],
+                        ),
+                        items: elementPayTypes2
+                            .map((item) => DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ))
+                            .toList(),
+                        value: selectedValue1,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedValue1 = value;
+                          });
+                          // print(selectedValue);
+                        },
+                        icon: const Icon(
+                          Icons.arrow_forward_ios_outlined,
+                        ),
+                        iconSize: 14,
+                        iconEnabledColor: Colors.white,
+                        iconDisabledColor: Colors.grey,
+                        buttonHeight: 66,
+                        buttonWidth: 300,
+                        buttonPadding:
+                            const EdgeInsets.only(left: 14, right: 14),
+                        buttonDecoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(14),
+                          border: Border.all(
+                            color: Colors.black26,
+                          ),
+                          color: elevatedButtonColor,
+                        ),
+                        buttonElevation: 2,
+                        itemHeight: 40,
+                        itemPadding: const EdgeInsets.only(left: 14, right: 14),
+                        dropdownMaxHeight: 200,
+                        dropdownWidth: 200,
+                        dropdownPadding: null,
+                        dropdownDecoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(14),
+                          color: elevatedButtonColor,
+                        ),
+                        dropdownElevation: 8,
+                        scrollbarRadius: const Radius.circular(40),
+                        scrollbarThickness: 6,
+                        scrollbarAlwaysShow: true,
+                        offset: const Offset(-20, 0),
+                      ),
+                    ),
+                  ),
 
             Padding(
               padding: const EdgeInsets.only(
@@ -313,7 +398,7 @@ class _AddElementPageState extends State<AddElementPage> {
                       addElement(
                           elementName.text,
                           num.parse(elementPrice.text),
-                          selectedValue!,
+                          selectedValue2 == 0 ? "Income" : selectedValue!,
                           elementDate.selectedDate ?? DateTime.now(),
                           selectedValue1!,
                           selectedValue2!);

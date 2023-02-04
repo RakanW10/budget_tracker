@@ -22,7 +22,7 @@ class OperatinoList extends StatelessWidget {
       child: ListView.builder(
         itemCount: operations.length,
         itemBuilder: ((context, index) => OperationCard(
-              iconPath: icons[operations[index].elementType]!,
+              iconPath: icons[operations[index].elementType] ?? "",
               title: operations[index].elementName,
               date: operations[index].elementDate,
               amount: operations[index].elementPrice,
