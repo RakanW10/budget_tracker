@@ -3,6 +3,7 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../router/router.dart';
 import '../auth/login.dart';
 
 Widget SplashElement({
@@ -70,7 +71,7 @@ Widget SplashElement({
                   ),
                 ),
                 onPressed: () {
-                  Get.to(() => Login());
+                  Get.offAllNamed(RouterName.login);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

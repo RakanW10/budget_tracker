@@ -93,7 +93,7 @@ class Login extends StatelessWidget {
                           //   return;
                           // }
                           storage.write('uid', user!.user!.uid);
-                          Get.toNamed(RouterName.homepage);
+                          Get.offAllNamed(RouterName.homepage);
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
