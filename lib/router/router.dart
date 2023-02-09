@@ -2,6 +2,7 @@ import 'package:budget_tracker/router/bindingClasses.dart';
 import 'package:budget_tracker/view/addElementPage.dart';
 import 'package:budget_tracker/view/auth/signup.dart';
 import 'package:budget_tracker/view/homepage.dart';
+import 'package:budget_tracker/view/takeInfoScreen.dart';
 import 'package:get/get.dart';
 
 import '../view/splashScreen.dart';
@@ -28,6 +29,11 @@ List<GetPage<dynamic>> routerApp = [
   GetPage(
     name: RouterName.addElementPage,
     page: () => const AddElementPage(),
+  ),
+  GetPage(
+    name: RouterName.takeInfoScreen,
+    page: () => TakeInfoScreen(),
+    binding: TakeInfoBinding(),
   )
 ];
 
@@ -37,4 +43,5 @@ abstract class RouterName {
   static const String register = "/register";
   static const String splashScreen = "/splashscreen";
   static const String addElementPage = "/addelementpage";
+  static const String takeInfoScreen = "/takeInfoScrenn";
 }

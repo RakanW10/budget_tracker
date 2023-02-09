@@ -8,8 +8,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'firebase_options.dart';
 
-var storageData = GetStorage();
-
 void main() async {
   await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,8 +38,9 @@ class MyApp extends StatelessWidget {
       ],
       locale: const Locale('ar'),
       title: 'Material App',
-      initialRoute:
-          storage.read('uid') != null ? RouterName.homepage : RouterName.login,
+      // initialRoute:
+      //     storage.read('uid') != null ? RouterName.homepage : RouterName.login,
+      initialRoute: RouterName.login,
       getPages: routerApp,
     );
   }

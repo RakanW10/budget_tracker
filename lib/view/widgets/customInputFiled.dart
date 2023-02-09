@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../style.dart';
 
@@ -33,9 +34,10 @@ class CustomInputFiled extends StatelessWidget {
             child: Text(
               labelName,
               style: const TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold),
+                fontSize: 16,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           TextFormField(
@@ -44,13 +46,16 @@ class CustomInputFiled extends StatelessWidget {
                 : TextInputType.text,
             validator: validator,
             obscureText: inputType == InputType.password ? true : false,
+            inputFormatters: inputType == InputType.number
+                ? [FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))]
+                : null,
             style: const TextStyle(color: Colors.white),
             controller: userController,
             decoration: InputDecoration(
               suffixIconColor: Colors.white,
               hintText: hintText,
-              hintStyle: const TextStyle(
-                color: Colors.white,
+              hintStyle: TextStyle(
+                color: text_secondray,
               ),
               fillColor: textFormFileColor,
               filled: true,

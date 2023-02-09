@@ -1,3 +1,4 @@
+import 'package:budget_tracker/Constants.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -105,13 +106,17 @@ class Signup extends StatelessWidget {
                             }
                           } else {
                             var x = await normalSignUp(
-                                userEmail.text, userPassword.text);
+                              userEmail.text,
+                              userPassword.text,
+                            );
                             if (x == null) {
                               Get.snackbar("Error", "Error in signup");
                               return;
                             }
+                            storage.write("uid", x.user!.uid);
                           }
-                          Get.toNamed(RouterName.login);
+
+                          Get.toNamed(RouterName.takeInfoScreen);
                         },
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all(
@@ -174,8 +179,9 @@ class Signup extends StatelessWidget {
                     child: SizedBox(
                       height: 66,
                       child: ElevatedButton(
-                        onPressed: () {
-                          signInWithGoogle();
+                        onPressed: () async {
+                          var user = await signInWithGoogle();
+                          storage.write("uid", user.user!.uid);
                           Get.toNamed(RouterName.homepage);
                         },
                         style: ButtonStyle(
