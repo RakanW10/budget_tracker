@@ -25,13 +25,16 @@ class HomepageController extends GetxController {
   }
 
   double monthly_obligations_rate() {
+    if (user!.income == 0) return 0;
     return user!.total_obligations_amount / user!.income * 100;
   }
 
   double monthly_exchange_rate() {
     double total_monthly_exchange = 0;
     for (var element in user!.elements) {
-      if (element.elementPrice < 0) {
+      if ((DateTime.now().year == element.elementDate.year) &&
+          (DateTime.now().month == element.elementDate.month) &&
+          (element.elementPrice < 0)) {
         total_monthly_exchange += element.elementPrice.abs();
       }
     }
